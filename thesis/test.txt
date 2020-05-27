@@ -1,6 +1,3 @@
-<<<<<<< HEAD
 master line
-=======
 
 hello branch
->>>>>>> SatThesis
