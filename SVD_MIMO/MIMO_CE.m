@@ -1,10 +1,4 @@
-%BER_arr = zeros(1,26);
-%SNR = 0:1:25;
-%iter = 1000;
-%% TRANSMITTER PART
-%for k = 1:26
- %   BER = 0;
-  %  for j = 1:iter
+
 %% random message bits generation
 total_bits = 5080;
 data_bits = round(rand(1,total_bits));
@@ -27,12 +21,11 @@ data_bits = round(rand(1,total_bits));
 [tx_cp, tx_cp2] = IFFT_1(qam_symbols_mod, qam_symbols_mod_2);
 
 %% effect of channel fading co-efficient and addition of Additive White Gaussian Noise(AWGN) 
-[channel_faded_data_y1, channel_faded_data_y2] = channel_1(tx_cp, tx_cp2);
+[tx_vector_1, tx_vector_2] = channel_1(tx_cp, tx_cp2);
 
-%channel_faded_data_y1  = tx_cp;
-%channel_faded_data_y2 = tx_cp2;
+
 %%
-[noisy_data_1,noisy_data_2] = add_noise_1(channel_faded_data_y1,channel_faded_data_y2);
+[noisy_data_1,noisy_data_2] = add_noise_1(tx_vector_1, tx_vector_2);
 %% RECEIVER PART
 
 %% OFDM
@@ -54,17 +47,6 @@ error_bits_1 = sum(bitxor(descrambler_1(:), data_bits_t(:)))
 %%
 BER_1 = error_bits_1 / total_bits
 %BER_2 = error_bits_2 / total_bits
-%%
-
-%BER = BER + BER_1;
-   % end
-  %  BER = BER/iter;
- %   BER_arr(k) = BER;
-%end
-
-
-%BER_arr = smooth(BER_arr);
-%semilogy(SNR, BER_arr)
 
 
 

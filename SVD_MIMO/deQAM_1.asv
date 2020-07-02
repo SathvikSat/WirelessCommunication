@@ -92,11 +92,10 @@ H21_H22 = H_est(2,1) + H_est(2,2);
 
  
 [U S V] = svd(H_est); 
-U = U'; 
  
-y_cap_1 = ( U(1,1) * y_data_1) + ( U(1,2) * y_data_2); 
+ 
+y_cap_1 = 
 
-y_cap_2 = ( U(2,1) * y_data_1) + ( U(2,2) * y_data_2);
  %%
 rx_without_qam_1 = qamdemod(x_average, 256);
 %rx_without_qam_2 = qamdemod(x_data_2, 256);

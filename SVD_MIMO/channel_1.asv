@@ -1,6 +1,6 @@
 % channel effect
 
-function  [tx_vector_1, tx_vector_2] = channel_1(tx_cp, tx_cp2)
+function [channel_faded_data_y1,channel_faded_data_y2] = channel_1(tx_cp, tx_cp2)
 
 L = 1; %Channel Taps
 %h = zeros(1, N-L+1);
@@ -42,14 +42,14 @@ tx_cp_intermediate_1 = (V(1,1) * tx_cp) + (V(1,2) * tx_cp2) ;
 tx_cp_intermediate_2 = (V(2,1) * tx_cp) + (V(2,2) * tx_cp2) ;
 
 
-%tx_vector_intermediate = [tx_cp_intermediate_1; tx_cp_intermediate_2];
+tx_vector_intermediate = [tx_cp_intermediate_1; tx_cp_intermediate_2];
 
 H_at_tx = [h_unpad_11 h_unpad_12; h_unpad_21 h_unpad_22];
 
-tx_vector_1 = (H_at_tx(1,1) * tx_cp_intermediate_1) + (H_at_tx(1,2)* tx_cp_intermediate_2);
-tx_vector_2 = (H_at_tx(2,1) * tx_cp_intermediate_1) + (H_at_tx(2,2)* tx_cp_intermediate_2);
+tx_vector_1 = (H_at_tx(1,1) * tx_cp_intermediate_1) + (H_at_tx(1,2)* tx_cp_intermediate(2,1));
+tx_vector_2 = (H_at_tx(2,1) * tx_cp_intermediate_1) + (H_at_tx(2,2)* tx_vec_intermediate(2,1));
 
-%tx_vector = [tx_vector_1; tx_vector_2];
+tx_vector = [tx_vector_1; tx_vector_2];
 
 
 end
